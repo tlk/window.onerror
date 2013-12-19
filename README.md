@@ -40,6 +40,8 @@ script is not meant to compete with those services.
 
 TBD
 
+See also https://github.com/tlk/window.onerror-blacklist for a list of "odd" exceptions.
+
 
 #### Inspired by
 
