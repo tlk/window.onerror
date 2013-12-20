@@ -40,7 +40,11 @@ script is not meant to compete with those services.
 
 TBD
 
-See also https://github.com/tlk/window.onerror-blacklist for a list of "odd" exceptions.
+
+#### See also
+
+* https://github.com/tlk/window.onerror-blacklist for a list of "odd" exceptions.
+* https://github.com/errorception/ie-error-languages on how to interpret localized errors (MSIE)
 
 
 #### Inspired by
