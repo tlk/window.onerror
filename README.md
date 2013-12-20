@@ -47,7 +47,7 @@ TBD
 * https://github.com/errorception/ie-error-languages on how to interpret localized errors (MSIE)
 
 
-#### Inspired by
+#### Commercial solutions
 
 * http://www.muscula.com
 * https://errorception.com/
