@@ -49,7 +49,8 @@ TBD
 
 #### Inspired by
 
-Allan Ebdrup, http://www.muscula.com
+* http://www.muscula.com
+* https://errorception.com/
 
 
 ### License
