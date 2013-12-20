@@ -1,6 +1,6 @@
 window.onerror
 ====
-#### Log client side exceptions on your server when they occur in production. Works in all browsers. Get a glimpse into what's going on when something fails in the browser.
+#### Log client side exceptions on your server when they occur in production. Works in all major browsers. Get a glimpse into what's going on when something fails in the browser.
 
 #### The idea
 Network errors, limited memory and badly written browser extensions can be a
