@@ -51,8 +51,3 @@ TBD
 
 * http://www.muscula.com
 * https://errorception.com/
-
-
-### License
-
-Copyright 2014 Thomas L. Kjeldsen. Released under the [MIT License (MIT)](LICENSE).
