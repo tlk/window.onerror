@@ -43,11 +43,20 @@ TBD
 
 #### See also
 
-* https://github.com/tlk/window.onerror-blacklist for a list of "odd" exceptions.
+* https://github.com/tlk/window.onerror-blacklist for a list of "odd" exceptions
 * https://github.com/errorception/ie-error-languages on how to interpret localized errors (MSIE)
+* https://github.com/ryanseddon/sourcemap-onerror
+* https://github.com/stacktracejs/stacktrace.js
+* https://github.com/occ/TraceKit
+* https://github.com/jefferyto/glitchjs
+* https://github.com/protonet/simple-javascript-airbrake-notifier
+* http://blog.protonet.info/post/9620971736/exception-notifier-javascript
+* http://jserrlog.appspot.com/
 
 
 #### Commercial solutions
 
 * http://www.muscula.com
-* https://errorception.com/
+* https://errorception.com
+* https://bugsnag.com
+* https://www.debuggify.net
