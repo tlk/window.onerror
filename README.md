@@ -1,22 +1,29 @@
 window.onerror
 ====
-#### Log client side exceptions on your server when they occur in production. Works in all major browsers. Get a glimpse into what's going on when something fails in the browser.
+#### Log client side javascript exceptions on your server. Works in all major browsers.
 
-#### The idea
-Network errors, limited memory and badly written browser extensions can be a
-hostile environment for your client side code. Nevertheless, you want to
-improve your code and make it even more robust. How do you keep track of these
-"odd errors"? Well, a simple solution is to attach an error handler to
-window.onerror. If we allow the error handler to be optimistic it can be short
-and simple. Basically, it's just a matter of telling your server that something
-went wrong, using a simple AJAX call.
+When our client side javascript is deployed it has to work in a hostile browser environment with network errors, limited memory, malware and browser extensions of poor quality. With automated testing we have come a long way, but considering the unpredictable browser environment, there will be error cases that we cannot possibly predict.
 
-On your server, log everything that is posted to /window.onerror. After a while
-you will be able to see a new side of your web application. Now you can make it
-better.
+Nevertheless, our users expect everything to work flawlessly and we cannot expect them to provide reliable error reports. As a consequence, we are looking for a method to detect new javascript errors as soon as possible.
 
-There are commercial solutions that already do this and more, and this simple
-script is not meant to compete with those services.
+So how do we keep track of client side errors?
+
+A simple solution is to attach an javascript error handler to window.onerror, see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers.onerror
+
+Note that this does not catch all errors! But it might catch enough. Let us continue this happy-go-lucky approach and allow the error handler to be optimistic, because then we can keep it short and simple. That makes it less intrusive to inline the entire javascript error handler in a html script tag, which is preferable over using script src because that extra http get request might fail.
+
+On the server side we keep a log file with all the error messages we have 
+received from the client side error handler.
+
+We can now use this server side log file to discover when our client side javascript is failing in new and unexpected ways. Keep in mind that this is a happy-go-lucky solution, and that by design we are going to miss some errors.
+
+
+##### Classes of errors
+There are two classes of client side errors:
+* Errors that we can fix, and
+* Errors we cannot fix 
+
+I have collected a list of the last class at https://github.com/tlk/window.onerror-blacklist
 
 
 #### Get Started
@@ -77,7 +84,7 @@ file_put_contents('/var/log/window.onerror/all.log', $line, FILE_APPEND | LOCK_E
 
 #### See also
 
-* https://github.com/tlk/window.onerror-blacklist for a list of "odd" exceptions
+* https://github.com/tlk/window.onerror-blacklist for a list of odd exceptions
 * https://github.com/errorception/ie-error-languages on how to interpret localized errors (MSIE)
 * https://github.com/ryanseddon/sourcemap-onerror
 * https://github.com/stacktracejs/stacktrace.js
@@ -85,7 +92,7 @@ file_put_contents('/var/log/window.onerror/all.log', $line, FILE_APPEND | LOCK_E
 * https://github.com/jefferyto/glitchjs
 * https://github.com/protonet/simple-javascript-airbrake-notifier
 * http://blog.protonet.info/post/9620971736/exception-notifier-javascript
-* http://jserrlog.appspot.com/
+* http://jserrlog.appspot.com
 
 
 #### Commercial solutions
@@ -94,4 +101,4 @@ file_put_contents('/var/log/window.onerror/all.log', $line, FILE_APPEND | LOCK_E
 * https://errorception.com
 * https://bugsnag.com
 * https://www.debuggify.net
-* http://trackjs.com/
+* http://trackjs.com
