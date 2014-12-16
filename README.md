@@ -6,7 +6,7 @@ When our client side javascript is deployed it has to work in a hostile browser 
 
 Nevertheless, our users expect everything to work flawlessly and we cannot expect them to provide reliable error reports. As a consequence, we are looking for a method to detect new javascript errors as soon as possible.
 
-So how do we keep track of client side errors?
+##### So how do we keep track of client side errors?
 
 A simple solution is to attach an javascript error handler to window.onerror, see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers.onerror
 
