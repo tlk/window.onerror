@@ -27,18 +27,42 @@ script is not meant to compete with those services.
     <script>window.onerror = function(m,u,l,c) { if (window.XMLHttpRequest) { var xhr = new XMLHttpRequest(); var msg = "msg="+encodeURIComponent(m)+"&url="+encodeURIComponent(u)+"&line="+l+"&col="+c+"&href="+encodeURIComponent(window.location.href); xhr.open("GET", "/window.onerror?"+msg, true); xhr.setRequestHeader("Content-Type", "text/plain;charset=UTF-8"); xhr.send(); } }; </script>
     ```
 
-2. Make your server log the data that is posted to /window.onerror
-3. Verify by adding a script error:
-    ```javascript
-    <script>
-    alrt("foo");
-    /script>
+2. Make your server log the data that is posted to /window.onerror e.g:
+
+    ```php
+    <?php
+
+if (!$_POST['msg']) {
+        exit;
+}
+
+if ($_POST['msg'] == 'Script error.' && $_POST['line'] == '0') {
+        exit;
+}
+
+$log = array();
+$log[] = $_POST['href'];
+$log[] = $_POST['url'];
+$log[] = $_POST['msg'];
+$log[] = $_POST['line'];
+$log[] = $_POST['col'];
+$log[] = $_SERVER['HTTP_USER_AGENT'];
+$log[] = time();
+
+$line = json_encode($log) . "\n";
+
+file_put_contents('/var/log/window.onerror/all.log', $line, FILE_APPEND | LOCK_EX);
+
+?>
     ```
 
+3. Verify by adding a script error:
 
-#### Examples
-
-TBD
+    ```html
+    <script>
+    alrt("foo");
+    </script>
+    ```
 
 
 #### See also
