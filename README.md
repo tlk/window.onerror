@@ -24,7 +24,17 @@ script is not meant to compete with those services.
 1. Insert the following before any other script tags in your HTML:
 
     ```html
-    <script>window.onerror = function(m,u,l,c) { if (window.XMLHttpRequest) { var xhr = new XMLHttpRequest(); var msg = "msg="+encodeURIComponent(m)+"&url="+encodeURIComponent(u)+"&line="+l+"&col="+c+"&href="+encodeURIComponent(window.location.href); xhr.open("GET", "/window.onerror?"+msg, true); xhr.setRequestHeader("Content-Type", "text/plain;charset=UTF-8"); xhr.send(); } }; </script>
+    <script>
+    window.onerror = function(m,u,l,c) {
+        if (window.XMLHttpRequest) {
+            var xhr = new XMLHttpRequest();
+            var msg = "msg="+encodeURIComponent(m)+"&url="+encodeURIComponent(u)+"&line="+l+"&col="+c+"&href="+encodeURIComponent(window.location.href);
+            xhr.open("GET", "/window.onerror?"+msg, true);
+            xhr.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+            xhr.send();
+        }
+    };
+    </script>
     ```
 
 2. Make your server log the data that is posted to /window.onerror e.g:
