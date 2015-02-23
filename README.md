@@ -8,7 +8,7 @@ Nevertheless, our users expect everything to work flawlessly and we cannot expec
 
 ##### So how do we keep track of client side errors?
 
-A simple solution is to attach an javascript error handler to window.onerror, see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers.onerror
+A simple solution is to attach an javascript error handler to window.onerror.
 
 Note that this does not catch all errors! But it might catch enough. Let us continue this happy-go-lucky approach and allow the error handler to be optimistic, because then we can keep it short and simple. That makes it less intrusive to inline the entire javascript error handler in a html script tag, which is preferable over using script src because that extra http get request might fail.
 
@@ -85,6 +85,7 @@ file_put_contents('/var/log/window.onerror/all.log', $line, FILE_APPEND | LOCK_E
 
 #### See also
 
+* https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers.onerror
 * https://github.com/tlk/window.onerror-blacklist for a list of odd exceptions
 * https://github.com/errorception/ie-error-languages on how to interpret localized errors (MSIE)
 * https://github.com/ryanseddon/sourcemap-onerror
