@@ -36,7 +36,7 @@ I have collected a list of the last class at https://github.com/tlk/window.onerr
         if (window.XMLHttpRequest) {
             var xhr = new XMLHttpRequest();
             var msg = "msg="+encodeURIComponent(m)+"&url="+encodeURIComponent(u)+"&line="+l+"&col="+c+"&href="+encodeURIComponent(window.location.href);
-            xhr.open("GET", "/window.onerror?"+msg, true);
+            xhr.open("GET", "/logger.php?"+msg, true);
             xhr.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
             xhr.send();
         }
@@ -44,7 +44,7 @@ I have collected a list of the last class at https://github.com/tlk/window.onerr
     </script>
     ```
 
-2. Make your server log the data that is posted to /window.onerror e.g:
+2. Make your server log the data that is posted to /logger.php e.g:
 
     ```php
     <?php
@@ -68,6 +68,7 @@ $log[] = time();
 
 $line = json_encode($log) . "\n";
 
+# NOTE: Adjust this path and file permissions
 file_put_contents('/var/log/window.onerror/all.log', $line, FILE_APPEND | LOCK_EX);
 
 ?>
