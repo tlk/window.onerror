@@ -95,6 +95,7 @@ file_put_contents('/var/log/window.onerror/all.log', $line, FILE_APPEND | LOCK_E
 * https://github.com/protonet/simple-javascript-airbrake-notifier
 * http://blog.protonet.info/post/9620971736/exception-notifier-javascript
 * http://jserrlog.appspot.com
+* http://blog.gospodarets.com/track_javascript_angularjs_and_jquery_errors_with_google_analytics/
 
 
 #### Commercial solutions
