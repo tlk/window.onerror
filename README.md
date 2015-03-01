@@ -96,6 +96,9 @@ file_put_contents('/var/log/window.onerror/all.log', $line, FILE_APPEND | LOCK_E
 * http://blog.protonet.info/post/9620971736/exception-notifier-javascript
 * http://jserrlog.appspot.com
 * http://blog.gospodarets.com/track_javascript_angularjs_and_jquery_errors_with_google_analytics/
+* https://github.com/sap1ens/javascript-error-logging
+* https://github.com/lucho-yankov/window.onerror
+* https://github.com/lillesand/js-onerror
 
 
 #### Commercial solutions
