@@ -99,6 +99,7 @@ file_put_contents('/var/log/window.onerror/all.log', $line, FILE_APPEND | LOCK_E
 * https://github.com/sap1ens/javascript-error-logging
 * https://github.com/lucho-yankov/window.onerror
 * https://github.com/lillesand/js-onerror
+* https://github.com/steaks/exceptions.js
 
 
 #### Commercial solutions
