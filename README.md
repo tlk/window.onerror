@@ -109,3 +109,4 @@ file_put_contents('/var/log/window.onerror/all.log', $line, FILE_APPEND | LOCK_E
 * https://bugsnag.com
 * https://www.debuggify.net
 * http://trackjs.com
+* See https://github.com/cheeaun/javascript-error-logging for a collection of JavaScript error logging services
