@@ -104,6 +104,8 @@ file_put_contents('/var/log/window.onerror/all.log', $line, FILE_APPEND | LOCK_E
 
 #### Commercial solutions
 
+* https://opbeat.com
+* https://papertrailapp.com
 * http://www.muscula.com
 * https://errorception.com
 * https://bugsnag.com
