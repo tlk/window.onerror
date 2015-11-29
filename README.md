@@ -35,8 +35,12 @@ I have collected a list of the last class at https://github.com/tlk/window.onerr
     window.onerror = function(m,u,l,c) {
         if (window.XMLHttpRequest) {
             var xhr = new XMLHttpRequest();
-            var msg = "msg="+encodeURIComponent(m)+"&url="+encodeURIComponent(u)+"&line="+l+"&col="+c+"&href="+encodeURIComponent(window.location.href);
-            xhr.open("GET", "/logger.php?"+msg, true);
+            var data = "msg="+encodeURIComponent(m)
+                    +"&url="+encodeURIComponent(u)
+                    +"&line="+l
+                    +"&col="+c
+                    +"&href="+encodeURIComponent(window.location.href);
+            xhr.open("GET", "/logger.php?"+data, true);
             xhr.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
             xhr.send();
         }
@@ -44,34 +48,44 @@ I have collected a list of the last class at https://github.com/tlk/window.onerr
     </script>
     ```
 
-2. Make your server log the data that is posted to /logger.php e.g:
+2. Make your server store the data that is being posted to it. This example is written in PHP to illustrate the concept:
 
     ```php
     <?php
 
-if (!$_POST['msg']) {
+    function getVal($key) {
+        return array_key_exists($key, $_GET)
+            ? $_GET[$key]
+            : '';
+    }
+
+    function isValidRequest() {
+        return getVal('msg')
+            && !(getVal('msg') == 'Script error.' && getVal('line') == '0')
+            && array_key_exists('HTTP_USER_AGENT', $_SERVER);
+    }
+
+    if (!isValidRequest()) {
         exit;
-}
+    }
 
-if ($_POST['msg'] == 'Script error.' && $_POST['line'] == '0') {
-        exit;
-}
+    $data = array();
+    array_push($data,
+        time(),
+        getVal('msg'),
+        getVal('url'),
+        getVal('line'),
+        getVal('col'),
+        getVal('href'),
+        $_SERVER['HTTP_USER_AGENT']
+    );
 
-$log = array();
-$log[] = $_POST['href'];
-$log[] = $_POST['url'];
-$log[] = $_POST['msg'];
-$log[] = $_POST['line'];
-$log[] = $_POST['col'];
-$log[] = $_SERVER['HTTP_USER_AGENT'];
-$log[] = time();
+    $line = json_encode($data) . "\n";
 
-$line = json_encode($log) . "\n";
+    # NOTE: Adjust this path and file permissions
+    file_put_contents('/var/log/window.onerror/all.log', $line, FILE_APPEND | LOCK_EX);
 
-# NOTE: Adjust this path and file permissions
-file_put_contents('/var/log/window.onerror/all.log', $line, FILE_APPEND | LOCK_EX);
-
-?>
+    ?>
     ```
 
 3. Verify by adding a script error:
@@ -112,3 +126,4 @@ file_put_contents('/var/log/window.onerror/all.log', $line, FILE_APPEND | LOCK_E
 * https://www.debuggify.net
 * http://trackjs.com
 * See https://github.com/cheeaun/javascript-error-logging for a collection of JavaScript error logging services
+

@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script>
+        window.onerror = function(m,u,l,c) {
+            if (window.XMLHttpRequest) {
+                var xhr = new XMLHttpRequest();
+                var data = "msg="+encodeURIComponent(m)
+                        +"&url="+encodeURIComponent(u)
+                        +"&line="+l
+                        +"&col="+c
+                        +"&href="+encodeURIComponent(window.location.href);
+                xhr.open("GET", "/logger.php?"+data, true);
+                xhr.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+                xhr.send();
+            }
+        };
+        </script>
+    </head>
+    <body>
+        <h1>Example of a window.onerror handler</h1>
+        <button onClick="alrt('foo')">Click me!</button>
+		Click this button to trigger the following:
+        <ol>
+            <li>a javascript exception</li>
+            <li>which is handled by a window.onerror handler</li>
+            <li>which reports back to server side /logger.php</li>
+            <li>which stores the exception data to /var/log/window.onerror/all.log</li>
+        </ol>
+
+        Read more at <a href="https://github.com/tlk/window.onerror">https://github.com/tlk/window.onerror</a>.
+    </body>
+</html>
