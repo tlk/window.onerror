@@ -23,7 +23,7 @@ There are two classes of client side errors:
 * Errors that we can fix, and
 * Errors we cannot fix 
 
-I have collected a list of the last class at https://github.com/tlk/window.onerror-blacklist
+I have collected a list of the last class at https://github.com/tlk/window.onerror-ignore
 
 
 #### Get Started
@@ -100,7 +100,7 @@ I have collected a list of the last class at https://github.com/tlk/window.onerr
 #### See also
 
 * https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers.onerror
-* https://github.com/tlk/window.onerror-blacklist for a list of odd exceptions
+* https://github.com/tlk/window.onerror-ignore for a list of odd exceptions
 * https://github.com/errorception/ie-error-languages on how to interpret localized errors (MSIE)
 * https://github.com/ryanseddon/sourcemap-onerror
 * https://github.com/stacktracejs/stacktrace.js
