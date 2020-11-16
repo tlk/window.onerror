@@ -8,7 +8,7 @@ Nevertheless, our users expect everything to work flawlessly and we cannot expec
 
 ##### So how do we keep track of client side errors?
 
-A simple solution is to attach an javascript error handler to window.onerror.
+A simple solution is to attach a javascript error handler to window.onerror.
 
 Note that this does not catch all errors! But it might catch enough. Let us continue this happy-go-lucky approach and allow the error handler to be optimistic, because then we can keep it short and simple. That makes it less intrusive to inline the entire javascript error handler in a html script tag, which is preferable over using script src because that extra http get request might fail.
 
